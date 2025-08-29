@@ -3,7 +3,7 @@
 /* Programmet skriver ut en "god dag"-melding med personens navn og alder
 */
 $fornavn=$_POST ["fornavn"];
-$etternavn=$_POST ["etternavn"]; /
+$etternavn=$_POST ["etternavn"];
 $alder=$_POST ["alder"]; / * variable gitt verdier fra feltene i HTML-skjemaet */
 print ("God dag $fornavn $etternav, du er $alder år og like sprek <br />"); /* resultat skrevet ut */
 ?>
