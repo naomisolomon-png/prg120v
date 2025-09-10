@@ -30,4 +30,5 @@ else  /* Angitt svar er galt */
 {
     print ("Feil. 3 ganger 3 er 9! <br/>");
 }
+}
 ?>
