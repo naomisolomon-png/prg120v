@@ -1,4 +1,4 @@
-<?php /* Oppgave 4 */
+<?php /* Tema 1 Oppgave 4 */
 /*
 /* Programmet mottar 2 tall fra et HTML-skjema ved POST-metoden
 /* Programmet skriver ut de 2 tallene og summen, differansen, produktet og kvotientet av/mellom tallene
