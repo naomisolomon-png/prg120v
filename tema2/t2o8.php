@@ -22,7 +22,7 @@ if (isset($_POST["svar"])) /* Svar-knappen er trykket */
 {
     $svar = $_POST["svar"];
 if ($svar == 9)  /* Angitt svar er riktig */
-
+{
 
     print ("Riktig. 3 ganger 3 er 9! <br/>");
 }
