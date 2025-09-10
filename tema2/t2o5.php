@@ -12,7 +12,7 @@ if ($tall3 == 1) /* regneoperasjon 1=addisjon er valgt */
 $resultat=$tall1 + $tall2; /* addisjon utført */
 print ("Tall 1 er $tall1 <br/>");
 print ("Tall 2 er $tall2 <br/>");
-print ("Regneoperasjonen er Addisjon <br/>");
+print ("Regneoperasjonen er addisjon <br/>");
 print ("Resultatet av regneoperasjonen er $resultat <br/>"); /* resultater skrevet ut */
 }
 else if ($tall3 == 2) /* regneoperasjon 2=subtraksjon er valgt */
@@ -20,7 +20,7 @@ else if ($tall3 == 2) /* regneoperasjon 2=subtraksjon er valgt */
 $resultat=$tall1 - $tall2; /* subtraksjon utført */
 print ("Tall 1 er $tall1 <br/>");
 print ("Tall 2 er $tall2 <br/>");
-print ("Regneoperasjonen er Subtraksjon <br/>");
+print ("Regneoperasjonen er subtraksjon <br/>");
 print ("Resultatet av regneoperasjonen er $resultat <br/>"); /* resultater skrevet ut */
 }
 else if ($tall3 == 3) /* regneoperasjon 3=multiplikasjon er valgt */
@@ -28,7 +28,7 @@ else if ($tall3 == 3) /* regneoperasjon 3=multiplikasjon er valgt */
 $resultat=$tall1 * $tall2; /* multiplikasjon utført */
 print ("Tall 1 er $tall1 <br/>");
 print ("Tall 2 er $tall2 <br/>");
-print ("Regneoperasjonen er Multiplikasjon <br/>");
+print ("Regneoperasjonen er multiplikasjon <br/>");
 print ("Resultatet av regneoperasjonen er $resultat <br/>"); /* resultater skrevet ut */
 }
 else if ($tall3 == 4) /* regneoperasjon 4=divisjon er valgt */
@@ -36,7 +36,7 @@ else if ($tall3 == 4) /* regneoperasjon 4=divisjon er valgt */
 $resultat=$tall1 / $tall2; /* divisjon utført */
 print ("Tall 1 er $tall1 <br/>");
 print ("Tall 2 er $tall2 <br/>");
-print ("Regneoperasjonen er Divisjon <br/>");
+print ("Regneoperasjonen er divisjon <br/>");
 print ("Resultatet av regneoperasjonen er $resultat <br/>"); /* resultater skrevet ut */
 }
 else
