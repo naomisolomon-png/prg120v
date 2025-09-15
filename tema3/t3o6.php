@@ -4,7 +4,7 @@
 /* Programmet skriver ut tallene fra 1 til det angitte tallet
 */
 $angittTall=$_POST ["angittTall"];
-if ($angittTall <= 0) /* angit tall er ikke et positivt heltall */
+if ($angittTall <= 0) /* angitt tall er ikke et positivt heltall */
 {
 print("Tallet $angittTall er ikke et positivt heltall <br/>");
 }
