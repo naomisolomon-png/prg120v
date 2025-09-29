@@ -18,8 +18,8 @@
 <?php
 if (isset($_POST ["velgUkedagKnapp"]))
 {
-    $ukedag=$_POST ["ukedah"];
-    print ("Foslash;lgende ukedag er valgt: $ukedag <br />");
+    $ukedag=$_POST ["ukedag"];
+    print ("F&oslash;lgende ukedag er valgt: $ukedag <br />");
 }
 ?>
 
