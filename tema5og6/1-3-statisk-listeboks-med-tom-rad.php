@@ -7,7 +7,7 @@
 <form method="post" action="" id="velgUkedagSkjema" name="velgUkedagSkjema">
     Ukedag
     <select name="ukedag" id="ukedag">
-        <option value="">Velg ukedag</option>
+        <option value="">velg ukedag</option>
         <option value="mandag">mandag</option>
         <option value="tirsdag">tirsdag</option>
         <option value="onsdag">onsdag</option>
