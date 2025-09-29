@@ -20,7 +20,7 @@
 <?php
 if (isset($_POST ["velgUkedagKnapp"]))
 {
-    $ukedag=$_POST ["ukedah"];
+    $ukedag=$_POST ["ukedag"];
     if (!$ukedag)
     {
         print ("Ukedag er ikke valgt <br />");
