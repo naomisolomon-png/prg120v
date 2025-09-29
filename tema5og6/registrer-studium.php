@@ -4,7 +4,7 @@
 /* Programmet registrerer data (studiumkode og studiumnavn) i databasen
 */
 ?>
-<h3>Registrer studium </h3>
+<h3> Registrer studium </h3>
 <form method="post" action="" id="registrerStudiumSkjema" name="registrerStudiumSkjema">
 Studiumkode <input type="text" id="studiumkode" name="studiumkode" required /> <br/>
 Studiumnavn <input type="text" id="studiumnavn" name="studiumnavn" required /> <br/>
