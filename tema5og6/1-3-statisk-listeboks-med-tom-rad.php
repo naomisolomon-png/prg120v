@@ -4,7 +4,7 @@
 
 <h3> Velg ukedag </h3>
 
-<form method="post" action="" id="velgPoststedSkjema" name="velgPoststedSkjema">
+<form method="post" action="" id="velgUkedagSkjema" name="velgUkedagSkjema">
     Ukedag
     <select name="ukedag" id="ukedag">
         <option value="">Velg ukedag</option>
