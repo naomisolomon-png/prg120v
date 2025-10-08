@@ -1,4 +1,4 @@
-<?php /* Oppgave 5 */
+<?php /* Tema 4 Oppgave 5 */
 /*
 /* Programmet mottar klassekode fra et HTML-skjema
 /* Programmet sjekker om klassekode er korrekt fylt ut ved bruk av en egendefinert fuksjon
@@ -19,13 +19,13 @@ if (!$klassekode) /* klassekode er ikke fylt ut */
 {
 $lovligKlassekode=false;
 }
-else if (strlen($klassekode)!=3) /* klassekode best�r ikke av 3 tegn */
+else if (strlen($klassekode)!=3) /* klassekode består ikke av 3 tegn */
 {
 $lovligKlassekode=false;
 }
 else
 {
-$tegn1=$klassekode[0]; /* f�rste tegn i klassekoden */
+$tegn1=$klassekode[0]; /* første tegn i klassekoden */
 $tegn2=$klassekode[1]; /* andre tegn i klassekoden */
 $tegn3=$klassekode[2]; /* tredje tegn i klassekoden */
 if (!ctype_alpha($tegn1)) /* tegn1 er ikke bokstav */
@@ -42,9 +42,9 @@ $lovligKlassekode=false;
 }
 }
 return $lovligKlassekode;
-} /* Slutt p� funksjonen validerKlassekode($klassekode) */
+} /* Slutt på funksjonen validerKlassekode($klassekode) */
 $klassekode=$_POST ["klassekode"];
-$lovligKlassekode=validerKlassekode($klassekode); /* valideringsfunksjon utf�rt */
+$lovligKlassekode=validerKlassekode($klassekode); /* valideringsfunksjon utført */
 if ($lovligKlassekode) /* klassekode er korrekt fylt ut */
 {
 print("Klassekode er korrekt fylt ut <br />");
