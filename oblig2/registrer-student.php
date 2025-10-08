@@ -33,7 +33,7 @@ include("db-tilkobling.php"); /* tilkobling til database-serveren utført og val
 $sqlSetning="SELECT * FROM student WHERE brukernavn='$brukernavn';";
 $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
 $antallRader=mysqli_num_rows($sqlResultat);
-if ($antallRader!=0) /* faget er registrert fra før */
+if ($antallRader!=0) /* studenten er registrert fra før */
 {
 print ("Studenten er registrert fra f&oslashr");
 }
