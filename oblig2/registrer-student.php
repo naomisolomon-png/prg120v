@@ -39,7 +39,7 @@ print ("Studenten er registrert fra f&oslashr");
 }
 else
 {
-$sqlSetning="INSERT INTO student (brukernavn, fornavn, etternavn, klassekode)
+$sqlSetning="INSERT INTO student (brukernavn,fornavn,etternavn,klassekode)
 VALUES('$brukernavn','$fornavn','$etternavn', '$klassekode');";
 mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; registrere data i databasen");
 print ("F&oslash;lgende student er n&aring; registrert: $brukernavn $fornavn $etternavn $klassekode");
