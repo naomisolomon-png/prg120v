@@ -7,9 +7,9 @@
 <h3> Velg klasse som skal slettes </h3>
 
 <form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema" onSubmit="return bekreft()"></form>
-    Klassekode
+    Klassens klassekode
     <select name="klassekode" id="klassekode">
-    <option value="">velg klassekode</option>
+    <option value="">velg klasse</option>
     <?php include("dynamiske-funksjoner.php"); listeboksKlasse(); ?>
     </select> <br />
     <input type="submit" value="Slett klasse" id="slettKlasseKnapp" name="slettKlasseKnapp" />
