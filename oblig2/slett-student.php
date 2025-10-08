@@ -1,26 +1,37 @@
-<?php /* slett-student*/
-/*
-/* Programmet lager et skjema for å kunne slette en student
-*/
+<?php /* Slett student */
+/* Programmet lager et skjema for å velge en student som skal slettes */
 ?>
+
 <script src="funksjoner.js"> </script>
 
-<h3>Slett student</h3>
+<h3> Velg student som skal slettes </h3>
 
-<form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema" onSubmit="return bekreft()">
-Studiumkode <input type="text" id="brukernavn" name="brukernavn" required /> <br/>
-<input type="submit" value="Slett student" name="slettStudentKnapp" id="slettStudentKnapp" />
+<form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema" onSubmit="return bekreft()"></form>
+    Studentens brukernavn
+    <select name="brukernavn" id="brukernavn">
+    <option value="">velg student</option>
+    <?php include("dynamiske-funksjoner.php"); listeboksStudent(); ?>
+    </select> <br />
+    <input type="submit" value="Slett student" id="slettStudentKnapp" name="slettStudentKnapp" />
 </form>
 
 <?php
 if (isset($_POST ["slettStudentKnapp"]))
 {
-include("db-tilkobling.php"); /* tilkobling til database-serveren utført og valg av database foretatt */
-$brukernavn=$_POST ["brukernavn"];
-$sqlSetning="DELETE FROM student WHERE brukernavn='$brukernavn';";
-mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-/* SQL-setning sendt til database-serveren */
+    $brukernavn=$_POST ["brukernavn"];
+    if (!$brukernavn)
+    {
+        print ("Student er ikke valgt <br />");
+    }
+    else
+    {
+        include ("db-tilkobling.php"); /* Tilkobling til database-server utført og valg av database foretatt */
 
-print ("F&oslash;lgende student er n&aring; slettet: $studiumkode <br />");
+        $sqlSetning="DELETE FROM student WHERE brukernavn='$brukernavn';";
+        mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
+        /* SQL-setning sendt til database-serveren */
+
+        print ("F&oslash;lgende student er n&aring; slettet: $brukernavn <br />");
+    }
 }
 ?>

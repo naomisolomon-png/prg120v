@@ -7,7 +7,7 @@
 <h3> Velg klasse som skal slettes </h3>
 
 <form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema" onSubmit="return bekreft()"></form>
-    Poststed
+    Klassekode
     <select name="klassekode" id="klassekode">
     <option value="">velg klassekode</option>
     <?php include("dynamiske-funksjoner.php"); listeboksKlasse(); ?>
