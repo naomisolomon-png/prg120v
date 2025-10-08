@@ -10,7 +10,7 @@
     Studentens brukernavn
     <select name="brukernavn" id="brukernavn">
     <option value="">velg student</option>
-    <?php include("dynamiske-funksjoner.php"); listeboksStudent(); ?>
+    <?php include("dynamiske-funksjoner.php"); listeboksBrukernavn(); ?>
     </select> <br />
     <input type="submit" value="Slett student" id="slettStudentKnapp" name="slettStudentKnapp" />
 </form>
