@@ -64,7 +64,7 @@ function sjekkbokserStudent()
       $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
       $brukernavn=$rad["brukernavn"];       
 
-      print("<input type='checkbox' id='brukernavn' name='brukernavn[]' value='$brukernavn' /> $brukernavn $fornavn $etternavn <br/>");  
+      print("<input type='checkbox' id='brukernavn' name='brukernavn[]' value='$brukernavn' /> $brukernavn <br/>");  
         /* ny sjekkboks laget */
     }
 }
