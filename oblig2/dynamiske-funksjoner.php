@@ -1,8 +1,8 @@
 <?php  /*  dynamiske funksjoner */
 /*
 /*  denne filen inneholder følgende dynamiske funksjoner:
-/*    listeboksBrukernavn()
-/*    listeboksBrukernavn()
+/*    listeboksStudent()
+/*    listeboksKlasse()
 */
 
 
@@ -28,7 +28,7 @@ function listeboksStudent()
     }
 }
 
-function listeboksKlassekode()
+function listeboksKlasse()
 {
   include("db-tilkobling.php");  /* tilkobling til database-server og valg av database utført */
       
