@@ -1,8 +1,8 @@
 <?php  /* slett-klasse */
 /*
-/*  Programmet lager et skjema for å velge en eller flere klasser som skal slettes 
-/* Programmet sjekker om det er studenter i klassen før sletting 
-/*  Programmet sletter de valgte klassene */
+/*  Programmet lager et skjema for å velge en klasse som skal slettes
+/*  Programmet sjekker om det er studenter i klassen før sletting
+/*  Programmet sletter den valgte klassen */
 ?>
 
 <script src="funksjoner.js"> </script>
@@ -11,52 +11,55 @@
 
 <form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema" onSubmit="return bekreft()">
   Klasse <br />
-  <?php include("dynamiske-funksjoner.php"); sjekkbokserKlasse(); ?> <br/>
+  <?php
+    // Dynamisk listeboks (én valg) — bruker samme database-tilkoblingfil som i resten av prosjektet
+    include("db-tilkobling.php");
+
+    echo '<select name="klassekode" id="klassekode">';
+    echo '<option value="">-- Velg klasse --</option>';
+
+    $sql = "SELECT klassekode, klassenavn FROM klasse ORDER BY klassekode;";
+    $res = mysqli_query($db, $sql) or die("Feil ved henting av klasser fra databasen");
+    while ($rad = mysqli_fetch_assoc($res)) {
+        $kode = htmlspecialchars($rad['klassekode'], ENT_QUOTES, 'UTF-8');
+        $navn = htmlspecialchars($rad['klassenavn'], ENT_QUOTES, 'UTF-8');
+        echo "<option value=\"{$kode}\">{$kode} - {$navn}</option>";
+    }
+
+    echo '</select>';
+  ?> <br/>
   <input type="submit" value="Slett klasse" name="slettKlasseKnapp" id="slettKlasseKnapp" />
 </form>
 
 <?php
   if (isset($_POST["slettKlasseKnapp"]))
     {
-      @$klassekode = $_POST["klassekode"];
-      $antall = is_array($klassekode) ? count($klassekode) : 0;
-
-      if ($antall == 0)
+      $klassekode = isset($_POST["klassekode"]) ? $_POST["klassekode"] : '';
+      if ($klassekode === '')
         {
-          print ("Ingen klasser er valgt. <br />");
+          print ("Ingen klasse er valgt. <br />");
         }
       else
         {
           include("db-tilkobling.php");
 
-          $noeFeilet = false;    // flagg: ble det forsøkt å slette en klasse med studenter?
-          $slettetCount = 0;     // teller hvor mange klasser faktisk ble slettet
+          $kk = mysqli_real_escape_string($db, $klassekode);
 
-          for ($r = 0; $r < $antall; $r++)
+          /* Sjekk om det finnes studenter i klassen */
+          $sjekkSql = "SELECT COUNT(*) AS cnt FROM student WHERE klassekode = '$kk';";
+          $sjekkResult = mysqli_query($db, $sjekkSql) or die("Feil ved sjekk i databasen");
+          $row = mysqli_fetch_assoc($sjekkResult);
+
+          if ($row['cnt'] > 0)
             {
-              $kk = mysqli_real_escape_string($db, $klassekode[$r]);
-
-              /* Sjekk om det finnes studenter i klassen */
-              $sjekkSql = "SELECT COUNT(*) AS cnt FROM student WHERE klassekode = '$kk';";
-              $sjekkResult = mysqli_query($db, $sjekkSql) or die("Feil ved sjekk i databasen");
-              $row = mysqli_fetch_assoc($sjekkResult);
-
-              if ($row['cnt'] > 0)
-                {
-                  $noeFeilet = true;  
-                  print ("Du kan ikke slette en klasse som har studenter i seg (klassekode: $kk) <br />");
-                }
-              else
-                {
-                  $sqlSetning = "DELETE FROM klasse WHERE klassekode='$kk';";
-                  mysqli_query($db, $sqlSetning) or die ("Ikke mulig å slette data i databasen");
-                  $slettetCount++;
-                }
+              print ("Du kan ikke slette en klasse som har studenter i seg (klassekode: $kk) <br />");
             }
-            if (!$noeFeilet && $slettetCount > 0)
-             {
-              print ("Valgte klasser er nå slettet. <br />");
-             }
+          else
+            {
+              $sqlSetning = "DELETE FROM klasse WHERE klassekode='$kk';";
+              mysqli_query($db, $sqlSetning) or die ("Ikke mulig å slette data i databasen");
+              print ("Valgt klasse er nå slettet. <br />");
+            }
         }
     }
 ?>
