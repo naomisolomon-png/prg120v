@@ -28,6 +28,10 @@
       else
         {
           include("db-tilkobling.php");
+
+          $noeFeilet = false;    // flagg: ble det forsøkt å slette en klasse med studenter?
+          $slettetCount = 0;     // teller hvor mange klasser faktisk ble slettet
+
           for ($r = 0; $r < $antall; $r++)
             {
               $kk = mysqli_real_escape_string($db, $klassekode[$r]);
@@ -39,15 +43,20 @@
 
               if ($row['cnt'] > 0)
                 {
+                  $noeFeilet = true;  
                   print ("Du kan ikke slette en klasse som har studenter i seg (klassekode: $kk) <br />");
                 }
               else
                 {
                   $sqlSetning = "DELETE FROM klasse WHERE klassekode='$kk';";
                   mysqli_query($db, $sqlSetning) or die ("Ikke mulig å slette data i databasen");
+                  $slettetCount++;
                 }
             }
-            print ("Operasjon gjennomført. <br />");
+            if (!noeFeilet && $slettetCount > 0)
+             {
+              print ("Valgte klasser er nå slettet. <br />");
+             }
         }
     }
 ?>
