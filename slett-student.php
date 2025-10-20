@@ -11,11 +11,11 @@
 <form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema" onSubmit="return bekreft()">
   Student <br />
   <?php
-    // Dynamisk listeboks (én valg)
+    // Dynamisk listeboks
     include("db-tilkobling.php");
 
     echo '<select name="brukernavn" id="brukernavn">';
-    echo '<option value="">-- Velg student --</option>';
+    echo '<option value=""> Velg student </option>';
 
     $sql = "SELECT brukernavn, fornavn, etternavn FROM student ORDER BY etternavn, fornavn;";
     $res = mysqli_query($db, $sql) or die("Feil ved henting av studenter fra databasen");
