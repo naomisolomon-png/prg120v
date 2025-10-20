@@ -47,6 +47,7 @@
                   mysqli_query($db, $sqlSetning) or die ("Ikke mulig å slette data i databasen");
                 }
             }
+            print ("Operasjon gjennomført. <br />");
         }
     }
 ?>
