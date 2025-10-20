@@ -33,7 +33,7 @@
               $kk = mysqli_real_escape_string($db, $klassekode[$r]);
 
               /* Sjekk om det finnes studenter i klassen */
-              $sjekkSql = "SELECT COUNT(*) AS cnt FROM klasse WHERE klassekode = '$kk';";
+              $sjekkSql = "SELECT COUNT(*) AS cnt FROM student WHERE klassekode = '$kk';";
               $sjekkResult = mysqli_query($db, $sjekkSql) or die("Feil ved sjekk i databasen");
               $row = mysqli_fetch_assoc($sjekkResult);
 
