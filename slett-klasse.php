@@ -12,11 +12,11 @@
 <form method="post" action="" id="slettKlasseSkjema" name="slettKlasseSkjema" onSubmit="return bekreft()">
   Klasse <br />
   <?php
-    // Dynamisk listeboks (én valg) — bruker samme database-tilkoblingfil som i resten av prosjektet
+    // Dynamisk listeboks
     include("db-tilkobling.php");
 
     echo '<select name="klassekode" id="klassekode">';
-    echo '<option value="">-- Velg klasse --</option>';
+    echo '<option value=""> Velg klasse </option>';
 
     $sql = "SELECT klassekode, klassenavn FROM klasse ORDER BY klassekode;";
     $res = mysqli_query($db, $sql) or die("Feil ved henting av klasser fra databasen");

@@ -1,7 +1,7 @@
 <?php  /* slett-student */
 /*
-/*  Programmet lager et skjema for å velge en eller flere studenter som skal slettes  
-/*  Programmet sletter de valgte studentene */
+/*  Programmet lager et skjema for å velge en student som skal slettes
+/*  Programmet sletter den valgte studenten */
 ?>
 
 <script src="funksjoner.js"> </script>
@@ -10,29 +10,42 @@
 
 <form method="post" action="" id="slettStudentSkjema" name="slettStudentSkjema" onSubmit="return bekreft()">
   Student <br />
-  <?php include("dynamiske-funksjoner.php"); sjekkbokserStudent(); ?> <br/>
-  <input type="submit" value="Slett student" name="slettStudentKnapp" id="slettStudentKnapp" /> 
+  <?php
+    /* Dynamisk listeboks */
+    include("db-tilkobling.php");
+
+    echo '<select name="brukernavn" id="brukernavn">';
+    echo '<option value=""> Velg student </option>';
+
+    $sql = "SELECT brukernavn fornavn etternavn FROM student ORDER BY brukernavn;";
+    $res = mysqli_query($db, $sql) or die("Feil ved henting av studenter fra databasen");
+    while ($rad = mysqli_fetch_assoc($res)) {
+        $brukernavn = htmlspecialchars($rad['brukernavn'], ENT_QUOTES, 'UTF-8');
+        $navn = htmlspecialchars(trim($rad['fornavn'] . ' ' . $rad['etternavn']), ENT_QUOTES, 'UTF-8');
+        echo "<option value=\"{$brukernavn}\">{$navn} ({$brukernavn})</option>";
+    }
+
+    echo '</select>';
+  ?> <br/>
+  <input type="submit" value="Slett student" name="slettStudentKnapp" id="slettStudentKnapp" />
 </form>
 
 <?php
-  if (isset($_POST ["slettStudentKnapp"]))
+  if (isset($_POST["slettStudentKnapp"]))
     {
-      @$brukernavn=$_POST ["brukernavn"];
-      $antall=count($brukernavn);
-
-      if ($antall==0)
+      $brukernavn = isset($_POST["brukernavn"]) ? $_POST["brukernavn"] : '';
+      if ($brukernavn === '')
         {
-          print ("Ingen studenter ble valgt <br />");
+          print ("Ingen student er valgt. <br />");
         }
       else
         {
-          include("db-tilkobling.php");  	
-          for ($r=0;$r<$antall;$r++)
-            {
-              $sqlSetning="DELETE FROM student WHERE brukernavn='$brukernavn[$r]';";
-              mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-            }
-          print ("Valgte student eller studenter er n&aring; slettet <br />");
+          include("db-tilkobling.php");
+
+          $bn = mysqli_real_escape_string($db, $brukernavn);
+          $sqlSetning = "DELETE FROM student WHERE brukernavn='$bn';";
+          mysqli_query($db, $sqlSetning) or die ("Ikke mulig å slette data i databasen");
+          print ("Valgt student er nå slettet. <br />");
         }
     }
-?> 
+?>
