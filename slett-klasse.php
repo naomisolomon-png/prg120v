@@ -53,7 +53,7 @@
                   $slettetCount++;
                 }
             }
-            if (!noeFeilet && $slettetCount > 0)
+            if (!$noeFeilet && $slettetCount > 0)
              {
               print ("Valgte klasser er nå slettet. <br />");
              }
