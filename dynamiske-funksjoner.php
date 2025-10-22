@@ -1,11 +1,11 @@
 <?php  /*  dynamiske funksjoner */
 /*
 /*  denne filen inneholder følgende dynamiske funksjoner:
-/*    sjekkbokserStudent()
-/*    sjekkbokserKlasse()
+/*    listeboksStudent()
+/*    listeboksKlasse()
 */
 
-function sjekkbokserStudent()
+function listeboksStudent()
 {
   include("db-tilkobling.php");  /* tilkobling til database-server og valg av database utført */
       
@@ -25,7 +25,7 @@ function sjekkbokserStudent()
     }
 }
 
-function sjekkbokserKlasse()
+function listevboksKlasse()
 {
   include("db-tilkobling.php");  /* tilkobling til database-server og valg av database utført */
       
