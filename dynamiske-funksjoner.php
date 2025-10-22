@@ -40,8 +40,8 @@ function listevboksKlasse()
       $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
       $klassekode=$rad["klassekode"];       
 
-      print("<input type='checkbox' id='klassekode' name='klassekode[]' value='$klassekode' /> $klassekode <br/>");  
-        /* ny sjekkboks laget */
+      print("<option value='$klassekode'>$klassekode</option>");
+        /* ny verdi i listeboksen laget */
     }
 }
 
