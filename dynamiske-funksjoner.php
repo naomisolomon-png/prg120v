@@ -20,7 +20,7 @@ function listeboksStudent()
       $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra spørringsresultatet */
       $brukernavn=$rad["brukernavn"];       
 
-      print("<option value='checkbox' id='brukernavn' name='brukernavn[]' value='$brukernavn' /> $brukernavn <br/>");  
+      print("<option=$brukernavn /> $brukernavn <br/>");  
         /* ny verdi i listeboksen laget */
     }
 }
